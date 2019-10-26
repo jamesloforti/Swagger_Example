@@ -24,20 +24,10 @@
 //
 // ******************************************************************************************************************
 //
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-
-namespace Swagger_Example_Api
+namespace Swagger_Example_Api.Model
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+	public class GenericRequest
+	{
+		public string Message { get; set; }
+	}
 }

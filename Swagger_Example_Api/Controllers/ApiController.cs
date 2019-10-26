@@ -24,20 +24,57 @@
 //
 // ******************************************************************************************************************
 //
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Swagger_Example_Api.Model;
+using System;
 
-namespace Swagger_Example_Api
+namespace Swagger_Example_Api.Controllers
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+	[Route("[controller]")]
+	[ApiController]
+	public class ApiController : ControllerBase
+	{
+		//Add logger
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+		public ApiController()
+		{
+
+		}
+
+		[HttpGet]
+		public IActionResult Get()
+		{
+			//Add logging
+
+			try
+			{
+				//Do something...
+				return Ok("GET successful!");
+			}
+			catch (Exception ex)
+			{
+				//Add logging
+				return BadRequest($"GET failed! Exception: {JsonConvert.SerializeObject(ex)}");
+			}
+		}
+
+		[HttpPost]
+		public IActionResult Post([FromBody]GenericRequest request)
+		{
+			//Add logging
+
+			try
+			{
+				//Do something...
+				return Ok("POST successful!");
+			}
+			catch (Exception ex)
+			{
+				//Add logging
+				return BadRequest($"POST failed using request: {JsonConvert.SerializeObject(request)}! " +
+					$"Exception: {JsonConvert.SerializeObject(ex)}");
+			}
+		}
+	}
 }

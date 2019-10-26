@@ -24,20 +24,14 @@
 //
 // ******************************************************************************************************************
 //
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+using Swagger_Example_Api.Interfaces;
 
-namespace Swagger_Example_Api
+namespace Swagger_Example_Api.Model
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+	public class AppSettings : IAppSettings
+	{
+		public string ApplicationName { get; set; }
+		public string Environment { get; set; }
+		public string SwaggerJsonUrl { get; set; }
+	}
 }
