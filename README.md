@@ -1,14 +1,7 @@
-\* //	        ____.           .____             _____  _______   
-//	           |    |           |    |    ____   /  |  | \   _  \  
-//	           |    |   ______  |    |   /  _ \ /   |  |_/  /_\  \ 
-//         /\__|    |  /_____/  |    |__(  <_> )    ^   /\  \_/   \
-//         \________|           |_______ \____/\____   |  \_____  /
-//	                                    \/          |__|        \/ 
-//
-// ********************************************************************************** \*
+![JRL Logo](http://jimmyloforti.com/_common/images/jrl_logo2.png)
 
-Application Name: Swagger_Example
-Description: Simple example to demonstrate swagger UI.
+## Application Name: Swagger_Example
+## Description: Simple example to demonstrate swagger UI.
 
 
 
