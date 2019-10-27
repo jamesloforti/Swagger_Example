@@ -30,6 +30,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Swagger_Example_Api.Interfaces;
 using Swagger_Example_Api.Model;
 using Swashbuckle.AspNetCore.Swagger;
@@ -39,50 +40,50 @@ using System.Net.Http.Headers;
 namespace Swagger_Example_Api
 {
 	public class Startup
-    {
-        private IConfiguration Configuration { get; }
-		private IAppSettings AppSettings { get; set; }
+	{
+		private IAppSettings _appSettings;
+
+		private IConfiguration Configuration { get; }
 
 		public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+		{
+			Configuration = configuration;
+		}
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-			AppSettings = Configuration.GetSection("AppSettings").Get<AppSettings>();
-			services.AddSingleton(AppSettings);
+		public void ConfigureServices(IServiceCollection services)
+		{
+			_appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>();
+			services.AddSingleton(_appSettings);
 
 			services.AddHttpContextAccessor();
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
-            services.AddSwaggerGen(c =>
-            {
-                c.EnableAnnotations();
-                c.SwaggerDoc("v1", new Info
-                {
-                    Version = "v1",
-                    Title = AppSettings.ApplicationName,
-                    Description = "Simple example to demonstrate swagger.",
-                    TermsOfService = "GNU General Public License",
-                    Contact = new Contact()
-                    {
-                        Name = "James LoForti",
-                        Email = "jamesloforti@gmail.com",
-                        Url = "www.jimmyloforti.com"
-                    }
-                });
-            });
-
-			//Add logger
+			services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
+			services.AddSwaggerGen(c =>
+			{
+				c.EnableAnnotations();
+				c.SwaggerDoc("v1", new Info
+				{
+					Version = "v1",
+					Title = _appSettings.ApplicationName,
+					Description = "Simple example to demonstrate swagger.",
+					TermsOfService = "GNU General Public License",
+					Contact = new Contact()
+					{
+						Name = "James LoForti",
+						Email = "jamesloforti@gmail.com",
+						Url = "www.jimmyloforti.com"
+					}
+				});
+			});
 
 			var httpClient = new HttpClient();
 			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			services.AddSingleton(h => httpClient);
-			//services.AddSingleton<IMyClass, MyClass>(); // example of adding class to dependency injection
-        }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
+			Log.Information($"{_appSettings.ApplicationName} has started successfully.");
+		}
+
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		{
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
 			else
@@ -92,10 +93,11 @@ namespace Swagger_Example_Api
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
-				c.SwaggerEndpoint(AppSettings.SwaggerJsonUrl, AppSettings.ApplicationName);
-				c.DocumentTitle = AppSettings.ApplicationName; // swagger ui web page title
-				c.RoutePrefix = "swagger"; // swagger ui url path
+				c.SwaggerEndpoint(_appSettings.SwaggerJsonUrl, _appSettings.ApplicationName);
+				c.DocumentTitle = _appSettings.ApplicationName; // swagger ui web page title
+				c.RoutePrefix = "swagger"; // swagger ui url path (also see launchSettings under Properties)
 			});
-        }
-    }
+			app.UseSerilogRequestLogging(); // must be last method called on app
+		}
+	}
 }

@@ -1,0 +1,54 @@
+[2019-10-27 12:02:49.281 INF] Starting web host.
+[2019-10-27 12:02:50.739 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:02:50.798 INF] User profile is available. Using 'C:\Users\Jimmy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2019-10-27 12:02:51.070 INF] Request starting HTTP/2.0 GET https://localhost:44358/swagger/index.html  
+[2019-10-27 12:02:51.254 INF] HTTP GET /swagger/index.html responded 200 in 160.0603 ms
+[2019-10-27 12:02:51.258 INF] Request finished in 189.8089ms 200 text/html
+[2019-10-27 12:02:51.385 INF] Request starting HTTP/2.0 GET https://localhost:44358/swagger/v1/swagger.json  
+[2019-10-27 12:02:51.458 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 71.3909 ms
+[2019-10-27 12:02:51.459 INF] Request finished in 73.9072ms 200 application/json;charset=utf-8
+[2019-10-27 12:02:55.064 INF] Request starting HTTP/2.0 GET https://localhost:44358/Api  
+[2019-10-27 12:02:55.066 INF] Executing endpoint 'Swagger_Example_Api.Controllers.ApiController.Get (Swagger_Example_Api)'
+[2019-10-27 12:02:55.074 INF] Route matched with {action = "Get", controller = "Api"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller Swagger_Example_Api.Controllers.ApiController (Swagger_Example_Api).
+[2019-10-27 12:02:55.139 INF] Executing action method Swagger_Example_Api.Controllers.ApiController.Get (Swagger_Example_Api) - Validation state: "Valid"
+[2019-10-27 12:02:55.141 INF] Attempting to perform GET.
+[2019-10-27 12:02:55.145 INF] Executed action method Swagger_Example_Api.Controllers.ApiController.Get (Swagger_Example_Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.5339ms.
+[2019-10-27 12:02:55.151 INF] Executing ObjectResult, writing value of type 'System.String'.
+[2019-10-27 12:02:55.156 INF] Executed action Swagger_Example_Api.Controllers.ApiController.Get (Swagger_Example_Api) in 79.8464ms
+[2019-10-27 12:02:55.157 INF] Executed endpoint 'Swagger_Example_Api.Controllers.ApiController.Get (Swagger_Example_Api)'
+[2019-10-27 12:02:55.159 INF] Request finished in 94.7798ms 200 application/json; charset=utf-8
+[2019-10-27 12:05:28.722 INF] Starting web host.
+[2019-10-27 12:05:30.199 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:05:30.711 INF] HTTP GET /swagger/index.html responded 200 in 160.9494 ms
+[2019-10-27 12:05:30.920 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 73.6446 ms
+[2019-10-27 12:07:51.756 INF] Starting web host.
+[2019-10-27 12:07:53.236 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:07:53.759 INF] HTTP GET /swagger/index.html responded 200 in 158.7904 ms
+[2019-10-27 12:07:53.982 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 79.8869 ms
+[2019-10-27 12:08:13.761 INF] Starting web host.
+[2019-10-27 12:08:15.225 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:08:15.743 INF] HTTP GET /swagger/index.html responded 200 in 158.4172 ms
+[2019-10-27 12:08:15.944 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 73.9638 ms
+[2019-10-27 12:08:20.171 INF] Attempting to perform GET.
+[2019-10-27 12:08:41.487 INF] Starting web host.
+[2019-10-27 12:08:42.972 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:08:43.498 INF] HTTP GET /swagger/index.html responded 200 in 157.1843 ms
+[2019-10-27 12:08:43.715 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 80.0388 ms
+[2019-10-27 12:08:47.244 INF] Attempting to perform GET.
+[2019-10-27 12:09:46.196 INF] Starting web host.
+[2019-10-27 12:09:47.659 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:09:48.185 INF] HTTP GET /swagger/index.html responded 200 in 156.2343 ms
+[2019-10-27 12:09:48.413 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 87.3757 ms
+[2019-10-27 12:09:52.366 INF] Attempting to perform GET.
+[2019-10-27 12:09:54.147 INF] Attempting to perform GET.
+[2019-10-27 12:10:33.461 INF] Starting web host.
+[2019-10-27 12:10:34.923 INF] ************************Swagger_Example has started successfully.
+[2019-10-27 12:10:40.641 INF] Attempting to perform GET.
+[2019-10-27 12:10:41.893 INF] Attempting to perform GET.
+[2019-10-27 12:10:42.880 INF] Attempting to perform GET.
+[2019-10-27 12:14:43.491 INF] Starting web host.
+[2019-10-27 12:14:44.918 INF] Swagger_Example has started successfully.
+[2019-10-27 12:14:49.478 INF] Attempting to perform GET.
+[2019-10-27 12:20:50.141 INF] Starting web host...
+[2019-10-27 12:20:51.609 INF] Swagger_Example has started successfully.
+[2019-10-27 12:21:00.296 INF] Attempting to perform GET.

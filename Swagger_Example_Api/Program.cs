@@ -28,18 +28,43 @@
 //
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Serilog;
+using Serilog.Events;
+using System;
 
 namespace Swagger_Example_Api
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+			Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+				.Enrich.FromLogContext()
+				.WriteTo.File(
+					"logs\\myapp.txt", 
+					rollingInterval: RollingInterval.Day,
+					outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+				.CreateLogger();
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+			try
+			{
+				Log.Information("Starting web host...");
+				CreateWebHostBuilder(args).Build().Run();
+			}
+			catch (Exception ex)
+			{
+				Log.Fatal(ex, "Host terminated unexpectedly.");
+			}
+			finally
+			{
+				Log.CloseAndFlush();
+			}
+		}
+
+		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+			WebHost.CreateDefaultBuilder(args)
+				.UseStartup<Startup>()
+				.UseSerilog();
+	}
 }

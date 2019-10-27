@@ -28,6 +28,7 @@
 //
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Serilog;
 using Swagger_Example_Api.Model;
 using System;
 
@@ -37,8 +38,6 @@ namespace Swagger_Example_Api.Controllers
 	[ApiController]
 	public class ApiController : ControllerBase
 	{
-		//Add logger
-
 		public ApiController()
 		{
 
@@ -47,7 +46,7 @@ namespace Swagger_Example_Api.Controllers
 		[HttpGet]
 		public IActionResult Get()
 		{
-			//Add logging
+			Log.Information("Attempting to perform GET.");
 
 			try
 			{
@@ -56,7 +55,7 @@ namespace Swagger_Example_Api.Controllers
 			}
 			catch (Exception ex)
 			{
-				//Add logging
+				Log.Error(ex, "Failed to perform GET!");
 				return BadRequest($"GET failed! Exception: {JsonConvert.SerializeObject(ex)}");
 			}
 		}
@@ -64,7 +63,7 @@ namespace Swagger_Example_Api.Controllers
 		[HttpPost]
 		public IActionResult Post([FromBody]GenericRequest request)
 		{
-			//Add logging
+			Log.Information("Attempting to perform POST.");
 
 			try
 			{
@@ -73,7 +72,7 @@ namespace Swagger_Example_Api.Controllers
 			}
 			catch (Exception ex)
 			{
-				//Add logging
+				Log.Error(ex, "Failed to perform POST!");
 				return BadRequest($"POST failed using request: {JsonConvert.SerializeObject(request)}! " +
 					$"Exception: {JsonConvert.SerializeObject(ex)}");
 			}
